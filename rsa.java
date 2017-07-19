@@ -67,7 +67,7 @@ public class rsa
         {        
             msg=num.multiply(new BigDecimal(i)).add(cipher);
             msg= takeRoot(e,msg,cube);
-             System.out.println(msg+"              "+i);
+            System.out.println(msg+"              "+i);
             if(msg.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0)
             {
                 t =i;
@@ -81,7 +81,6 @@ public class rsa
             {
                 if(copy.toBigInteger().compareTo(msg.toBigInteger())==0)
                 {
-                    //System.out.println("hello");
                     i = goToNextPrime(i);
                 }
                 copy = msg;
