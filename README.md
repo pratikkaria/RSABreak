@@ -5,36 +5,36 @@ As it is known, RSA (Rivest, Shamir, and Adelman) is one of the strongest encryp
 
 ## Getting Started
 
-The formula used in this algorithm is derived as follows :-
+The formula used in this algorithm is derived as follows :-  
 
-c = (m^e)mod n 
-=>(m^e) - n*t = c
-=> m^e = c + n*t
-=> m = ((c + n*t)^(1/e))
+c = (m^e)mod n   
+=>(m^e) - n*t = c  
+=> m^e = c + n*t  
+=> m = ((c + n*t)^(1/e))  
 
-Here, 
-m = The original message
-c = cipher text
-n = modulus n
-e = exponent d (encryption key)
-t = Any integer
+Here,  
+m = The original message  
+c = cipher text  
+n = modulus n  
+e = exponent d (encryption key)  
+t = Any integer  
 
 The message will be found once the value of the m becomes an integer. The first integer value of m is the required message. As the process can get slow once the value of e increases so to speed up the process an additional feature is added. Once the integer value of message for 2 consecutive prime values of t is same , we direct jump to the next prime number and find out the new value of m thereby reducing the number of iterations. 
 
 ## Example
  
-Sample Output:-
+Sample Output:-  
 
-Enter the encrypion key 
-3
-Enter the value of n 
-3127
-Enter the cipher text 
-1394
-89.000000          225
-TIME: 11066
+Enter the encrypion key   
+3  
+Enter the value of n  
+3127  
+Enter the cipher text  
+1394  
+89.000000          225  
+TIME: 11066  
 
-Verification:-
+Verification:-  
 So in the above example, the required message is 89 and the value of t is 225. We can verify this by putting t in the formula.
 Here n=3127, c=1394 and encryption key=3
 
