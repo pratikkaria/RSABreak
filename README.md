@@ -42,3 +42,7 @@ m = (3127*225 + 1394)^(1/3)
 => m = 89
 
 Several other examples have been tested and led to accurate solution. However for large value of encryption key e, the algorithm still responds slowly.
+
+## Authors  
+  
+* Pratik Kara  
