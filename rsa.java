@@ -56,18 +56,19 @@ public class rsa
         String c = xy.readLine();
         BigDecimal cipher = new BigDecimal(c);
         BigInteger i = new BigInteger("2");
-        BigInteger limit = new BigInteger("2000000");
+        BigInteger j = new BigInteger("1");
+        BigInteger limit = new BigInteger("1000");
         BigInteger t = new BigInteger("0");
         BigDecimal msg = new BigDecimal ("0");
         BigDecimal cube = new BigDecimal("0");
-        int flag = 0;
+        BigInteger flag = new BigInteger("0");
         BigDecimal copy = new BigDecimal("0");
         BigInteger check = new BigInteger("2");
-        for(;i.compareTo(limit)<0;i=i.add(BigInteger.ONE))
+        for(;j.compareTo(limit)<0;j=j.add(BigInteger.ONE))
         {        
             msg=num.multiply(new BigDecimal(i)).add(cipher);
             msg= takeRoot(e,msg,cube);
-            System.out.println(msg+"              "+i);
+            System.out.println(msg+"              "+i+"            "+flag+"          "+j);
             if(msg.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0)
             {
                 t =i;
@@ -75,19 +76,29 @@ public class rsa
             }   
             if(returnPrime(i))
             {
-                flag = 1;
+                flag = flag.add(BigInteger.ONE);
             }   
-            if(flag == 1)
+            if(flag.compareTo(BigInteger.ZERO) == 1)
             {
                 if(copy.toBigInteger().compareTo(msg.toBigInteger())==0)
                 {
-                    i = goToNextPrime(i);
+                    i = flag.multiply(goToNextPrime(i));                    
+                }
+                else
+                {
+                    i = i.add(BigInteger.ONE);
+                    flag = new BigInteger("0");
                 }
                 copy = msg;
             }
-            flag = 0;
+            else
+            {
+                i = i.add(BigInteger.ONE);
+                flag = new BigInteger("0");
+            }
         }
         System.out.println(msg+ "          "+i);
+        System.out.println("Number of saved iterations ="+ (i.subtract(j)));
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         System.out.println("TIME: "+elapsedTime);
